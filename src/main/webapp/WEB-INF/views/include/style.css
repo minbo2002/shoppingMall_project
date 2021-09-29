@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+a:link {  /* 하이퍼링크에서 밑줄제거하고 색깔이 나옴  */
+	text-decoration: none; color: blue;
+}
+a:hover { /* 마우스가 올라가면 밑줄이 생기고 색깔이 나옴 */
+	text-decoration: underline; color: red;  
+}
+a:visited { /* 방문링크 밑줄제거 */
+	text-decoration: none;
+}
+a:active { /* 클릭하면 밑줄제거하고 색깔이 나옴 */
+	text-decoration: none; color: yellow;
+}

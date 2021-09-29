@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="memberList" resultType="memberDto">
+		select * from member order by name		
+	</select>
+
+	<insert id="insertMember">
+		insert into member( userid, passwd, name, email ) 
+		values ( #{userid}, #{passwd}, #{name}, #{email} )
+	</insert>
+	
+	<select id="viewMember" resultType="memberDto">
+	 	select * from member
+	 	where userid=#{userid}
+	</select>
+
+	<select id="checkPw" resultType="int">
+	 	select count(*) from member
+	 	where userid=#{userid} and passwd=#{passwd}	 <!-- id,pw가 일치한다면 count 1나옴. 틀리면 조회안되니까 0나옴  -->
+	</select>
+	
+	<update id="updateMember">
+		update member
+		set name=#{name}, passwd=#{passwd}, email=#{email}
+		where userid=#{userid}
+	</update>
+
+	<delete id="deleteMember">
+		delete from member
+		where userid=#{userid}
+	</delete>
+	
+	<select id="login_check" resultType="String">
+		select name from member
+		where userid=#{userid} and passwd=#{passwd}
+	</select>
+
+</mapper>  
